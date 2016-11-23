@@ -21,8 +21,7 @@
       try {
         var result = ('global', eval)(input_script);//eval in global scope
         //div_result.text(result);
-        var result_text = result != null ? result.toString() : '';
-        append_text_with_br(div_result, result_text);
+        print_on_result_cell(div_result, result);
       } catch (error) {
         div_result.addClass('error-cell');
         div_result.text(error.toString());
@@ -52,11 +51,22 @@
     return false;// show error on console
   }
 
-  function append_text_with_br(node, text) {
-    var lines = text.split('\n');
-    for (var i = 0; i < lines.length; i++) {
-      node.append(document.createTextNode(lines[i]));
-      node.append(document.createElement('br'));
+  function print_on_result_cell(div, obj) {
+    if (obj == null) {
+      // empty
+    } else if (typeof obj === 'object' && 'inspectElement' in obj) {
+      // element
+      var element_dom = $(obj.inspectElement());//assume "<p>" element
+      div.append(element_dom);
+    } else {
+      // string
+      var p = $(document.createElement('p'));
+      var lines = obj.toString().split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        p.append(document.createTextNode(lines[i]));
+        p.append(document.createElement('br'));
+      }
+      div.append(p);
     }
   }
 
