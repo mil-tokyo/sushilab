@@ -1,0 +1,11 @@
+div.result {
+  border:1px solid black;
+}
+
+div.cell {
+  border:1px solid black;
+}
+
+div.error-cell {
+  background-color: pink;
+}
