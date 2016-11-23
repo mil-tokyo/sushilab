@@ -21,6 +21,26 @@
       save_notebook(name);
     });
 
+    $("#export-notebook").click(function () {
+      var name = $("#export-name").val();
+      export_notebook(name);
+    });
+
+    $("#import-notebook").click(function(e){
+      var name = $("#export-name").val();
+      var files = $("#import-notebook-file")[0].files;
+      if (files.length > 0) {
+        var f = files[0];
+        var reader = new FileReader();
+        reader.onload = function (t) {
+          var json_text = t.target.result;
+          localStorage.setItem('notebook-' + name, json_text);
+          $("#load-notebook").trigger('click');
+        }
+        reader.readAsText(f);
+      }
+    });
+
     var load_name = sessionStorage.getItem('load_name');
     if (load_name) {
       sessionStorage.removeItem('load_name');
@@ -145,6 +165,26 @@
     var export_data = { "cells": cells };
     localStorage.setItem('notebook-' + name, JSON.stringify(export_data));
     alert('Saved notebook ' + name);
+  }
+
+  function export_notebook(name) {
+    var json_str = localStorage.getItem('notebook-' + name);
+    if (!json_str) {
+      alert('Save notebook first');
+      return false;
+    }
+
+    var blob = new Blob([json_str], { "type": "application/json" });
+    var url = (window.URL || window.webkitURL).createObjectURL(blob);
+    var a = document.createElement('a');
+    a.download = 'notebook.json';
+    a.href = url;
+    var a_jq = $(a);
+    $("body").append(a_jq);//maybe needed
+    a.click();
+    a_jq.remove();
+
+    return true;
   }
 
 })();
