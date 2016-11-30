@@ -9,3 +9,7 @@ div.cell {
 div.error-cell {
   background-color: pink;
 }
+
+div.executedcell {
+  border:3px solid lightgreen;
+}

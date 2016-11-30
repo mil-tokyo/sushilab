@@ -17,7 +17,11 @@
   <div class="container theme-showcase" role="main">
     <div class="jumbotron">
       <h1>SushiLab</h1>
-      <p>SushiLab is JavaScript REPL environment for matrix computing.</p>
+      <p>
+        SushiLab is JavaScript REPL environment for matrix computing.<br> Almost all operations are performed on your computer;
+        not on the server.<br> The user interface is <span style="font-style: italic;">alpha version.</span> Future improvements
+        are planned.
+      </p>
     </div>
 
     <div id="cells">
@@ -25,15 +29,17 @@
 
     <p>
       <!-- <button type="button" class="btn btn-lg btn-default" id="add-cell">Add Cell</button> -->
-      <button type="button" class="btn btn-lg btn-default" id="new-notebook">New</button>
-      Name: <input type="text" id="export-name">
+      <button type="button" class="btn btn-lg btn-default" id="new-notebook">New</button> Name: <input type="text" id="export-name">
       <button type="button" class="btn btn-lg btn-default" id="save-notebook">Save</button>
       <button type="button" class="btn btn-lg btn-default" id="load-notebook">Load</button>
-      <button type="button" class="btn btn-lg btn-default" id="export-notebook">Export</button>
-      Import: <input type="file" id="import-notebook-file" name="import-notebook-file" style="display: inline;">
+      <button type="button" class="btn btn-lg btn-default" id="export-notebook">Export</button> Import: <input type="file"
+        id="import-notebook-file" name="import-notebook-file" style="display: inline;">
       <button type="button" class="btn btn-lg btn-default" id="import-notebook">Import</button>
     </p>
   </div>
+
+  <hr>
+  <a href="http://www.mi.t.u-tokyo.ac.jp/">Machine Intelligence Laboratory</a> @ The University of Tokyo <a href="https://github.com/mil-tokyo/sushilab">Github</a>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery.min.js"></script>
