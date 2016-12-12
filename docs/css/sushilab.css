@@ -6,6 +6,10 @@ div.cell {
   border:1px solid black;
 }
 
+textarea.cell {
+  font-family: monospace;
+}
+
 div.error-cell {
   background-color: pink;
 }
